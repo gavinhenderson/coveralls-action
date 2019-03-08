@@ -1,7 +1,5 @@
 #!/bin/sh
 
-sh -c "echo $*"
-
 # Exit if any subcommand fails
 set -e 
 export COVERALLS_REPO_TOKEN=$REPO_TOKEN
