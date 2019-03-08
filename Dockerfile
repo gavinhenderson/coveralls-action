@@ -7,4 +7,10 @@ LABEL "com.github.actions.color"="blue"
 
 ADD entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
+
+RUN apk add --no-cache --virtual .gyp \
+        python \
+        make \
+        g++ \
+
 ENTRYPOINT ["/entrypoint.sh"]
