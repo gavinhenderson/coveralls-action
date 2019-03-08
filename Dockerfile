@@ -8,9 +8,10 @@ LABEL "com.github.actions.color"="blue"
 ADD entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
-RUN apk add --no-cache --virtual .gyp \
-        python \
-        make \
-        g++ \
-
+RUN apk --no-cache add --virtual native-deps \
+  g++ gcc libgcc libstdc++ linux-headers make python && \
+  npm install --quiet node-gyp -g &&\
+  npm install --quiet && \
+  apk del native-deps
+  
 ENTRYPOINT ["/entrypoint.sh"]
