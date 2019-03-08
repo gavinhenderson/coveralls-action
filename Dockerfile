@@ -8,6 +8,8 @@ LABEL "com.github.actions.color"="blue"
 ADD entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
+COPY package.json package.json
+
 RUN apk add --no-cache --virtual .gyp python make g++ \
     && npm install \
     && apk del .gyp
